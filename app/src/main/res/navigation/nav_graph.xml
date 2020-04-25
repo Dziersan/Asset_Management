@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.example.asset_management.mainHub.mainHubFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_recycleActivity"
+            app:destination="@id/recycleActivity" />
+        <action
+            android:id="@+id/action_FirstFragment_to_addDeviceActivity"
+            app:destination="@id/addDeviceActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.example.asset_management.mainHub.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_devicecardtest">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/recycleActivity"
+        android:name="com.example.asset_management.recycleView.recycleActivity"
+        android:label="activity_main2"
+        tools:layout="@layout/activity_main2" />
+    <activity
+        android:id="@+id/addDeviceActivity"
+        android:name="com.example.asset_management.addDevice.addDeviceActivity"
+        android:label="activity_add_device"
+        tools:layout="@layout/activity_add_device" />
+</navigation>
