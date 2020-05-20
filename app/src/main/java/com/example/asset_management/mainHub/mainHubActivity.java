@@ -20,6 +20,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * MainHubActivity
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
 public class mainHubActivity extends AppCompatActivity {
 
 

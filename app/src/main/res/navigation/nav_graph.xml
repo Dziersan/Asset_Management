@@ -12,33 +12,52 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_recycleActivity"
             app:destination="@id/recycleActivity" />
         <action
             android:id="@+id/action_FirstFragment_to_addDeviceActivity"
             app:destination="@id/addDeviceActivity" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.asset_management.mainHub.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_devicecardtest">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_FirstFragment_to_placeholder"
+            app:destination="@id/Scan" />
+        <action
+            android:id="@+id/action_FirstFragment_to_placeholder2"
+            app:destination="@id/Settings" />
+        <action
+            android:id="@+id/action_FirstFragment_to_placeholder4"
+            app:destination="@id/History" />
+        <action
+            android:id="@+id/action_FirstFragment_to_Search"
+            app:destination="@id/Search" />
     </fragment>
     <activity
         android:id="@+id/recycleActivity"
-        android:name="com.example.asset_management.recycleView.recycleActivity"
+        android:name="com.example.asset_management.recycleView.RecycleActivity"
         android:label="activity_main2"
         tools:layout="@layout/activity_main2" />
     <activity
         android:id="@+id/addDeviceActivity"
-        android:name="com.example.asset_management.addDevice.addDeviceActivity"
+        android:name="com.example.asset_management.addDevice.AddDeviceActivity"
         android:label="activity_add_device"
         tools:layout="@layout/activity_add_device" />
+    <fragment android:id="@+id/Scan" >
+        <action
+            android:id="@+id/action_placeholder_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment android:id="@+id/Settings" >
+        <action
+            android:id="@+id/action_placeholder2_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment android:id="@+id/Search" >
+        <action
+            android:id="@+id/action_Search_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment android:id="@+id/History" >
+        <action
+            android:id="@+id/action_placeholder4_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>

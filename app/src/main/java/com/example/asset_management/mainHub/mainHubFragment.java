@@ -10,7 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.asset_management.R;
-
+/**
+ * MainHubFragment
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
 public class mainHubFragment extends Fragment {
 
     @Override

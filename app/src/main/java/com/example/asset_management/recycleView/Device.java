@@ -1,5 +1,11 @@
 package com.example.asset_management.recycleView;
-
+/**
+ * Device
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
 public class Device {
     private String inventoryNumber;
     private String manufacturer;
@@ -7,6 +13,9 @@ public class Device {
     private String status;
 
     private String deviceCategorie;
+
+    public Device(){
+    }
 
     public Device(String inventoryNumber, String manufacturer,String deviceCategorie, String model,  String status) {
         this.inventoryNumber = inventoryNumber;

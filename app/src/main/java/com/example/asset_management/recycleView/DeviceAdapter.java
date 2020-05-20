@@ -12,7 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.asset_management.R;
 
 import java.util.ArrayList;
-
+/**
+ * DeviceAdapter
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder> {
 
     private ArrayList<Device> devices;
@@ -20,27 +26,28 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item,
+                parent,false);
         return new ViewHolder(v);
     }
-public DeviceAdapter(ArrayList<Device>devices){
+    public DeviceAdapter(ArrayList<Device>devices){
         this.devices = devices;
 }
 
+    /**
+     * Which informations should be displayed on the view
+     * @param holder which informations should be displayed on the view
+     * @param position from the Screen
+     */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Device device = devices.get(position);
-
         holder.inventoryNumber.setText(device.getInventoryNumber());
         holder.deviceCategorie.setText(device.getDeviceCategorie());
         holder.manufacturer.setText(device.getManufacturer());
         holder.status.setText(device.getStatus());
         holder.model.setText(device.getModel());
     }
-
-//    @Override
-//    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-//    }
 
     @Override
     public int getItemCount() {
@@ -50,6 +57,15 @@ public DeviceAdapter(ArrayList<Device>devices){
             return 0;
         }
     }
+
+    /**
+     * ViewHolder
+     * <p>
+     *     Version 1.0
+     * </p>
+     * 11.05.2020
+     * creates the view with the TexFields
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View view;
         public final TextView inventoryNumber;

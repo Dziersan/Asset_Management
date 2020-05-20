@@ -9,8 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.asset_management.R;
-
-public class recycleFragment extends Fragment {
+/**
+ * RecyclerFragment
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
+public class RecycleFragment extends Fragment {
 
     @Override
     public View onCreateView(

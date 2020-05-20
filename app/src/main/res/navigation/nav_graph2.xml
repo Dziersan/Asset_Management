@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/First2Fragment"
-        android:name="com.example.asset_management.recycleView.recycleFragment"
+        android:name="com.example.asset_management.recycleView.RecycleFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_recycler">
 

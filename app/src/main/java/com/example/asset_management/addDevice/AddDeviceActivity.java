@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.HttpResponse;
 import com.example.asset_management.R;
 import com.example.asset_management.recycleView.Device;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import org.json.JSONArray;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,30 +24,44 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
-public class addDeviceActivity extends AppCompatActivity {
+/**
+ * AddDeviceActivity
+ * <p>
+ *     Version 1.0
+ * </p>
+ * 11.05.2020
+ */
+
+public class AddDeviceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_device);
 
-
         Button btnSave = findViewById(R.id.button4);
-        btnSave.setOnClickListener(new View.OnClickListener(){
+        btnSave.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
                 try {
                     addDevice();
                 } catch (IOException e) {
                     Context context = getApplicationContext();
                     int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT)
+                            .show();
                 }
             }
         });
     }
 
+    /**
+     * Takes the input from the AddDeviceActivity fields, creates an Device object and saves it
+     * in a json file on the internal storage
+     * @throws IOException
+     */
     public void addDevice() throws IOException {
 
         EditText editInventoryNumber = (EditText) findViewById(R.id.editInventoryNumber);
@@ -61,40 +78,22 @@ public class addDeviceActivity extends AppCompatActivity {
         String stringCategorie = editCategorie.getText().toString();
         String stringStatus = editStatus.getText().toString();
 
-        Device device = new Device (stringInventoryNumber,stringEditModel,stringManufacturer,stringCategorie,stringStatus);
-
-        try {
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext().openFileOutput("configgg.txt", Context.MODE_PRIVATE));
-            outputStreamWriter.write(device.toString());
-            outputStreamWriter.close();
-        }
-        catch (IOException e) {
-            Toast.makeText(getApplicationContext(),"File Error",Toast.LENGTH_SHORT).show();
-        }
+        Device device = new Device(stringInventoryNumber, stringEditModel, stringManufacturer,
+                stringCategorie, stringStatus);
 
         Gson gson = new Gson();
-        gson.toJson(device);
-//        try {
-//            FileWriter fileWriter = new FileWriter("device.json");
-//            gson.toJson(device, fileWriter);
-//            fileWriter.flush();
-//            fileWriter.close();
-//        }catch (IOException e){
-//            Toast.makeText(getApplicationContext(),"JSON Error",Toast.LENGTH_SHORT).show();
-//        }
+        String json = gson.toJson(device);
 
-//        Writer writer = new FileWriter("newDevice.json");
-//        Gson gson = new GsonBuilder().create();
-//        gson.toJson(device, writer);
-//        writer.flush(); //flush data to file   <---
-//        writer.close(); //close write          <---
-//        FileWriter fw = new FileWriter("ausgabe1.txt");
-//        BufferedWriter bw = new BufferedWriter(fw);
-//
-//        bw.write("test test test");
-//        bw.write("tset tset tset");
-//
-//        bw.close();
-        Toast.makeText(getApplicationContext(),device.toString(),Toast.LENGTH_SHORT).show();
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext()
+                    .openFileOutput("device.json", Context.MODE_PRIVATE));
+            outputStreamWriter.write(json);
+            outputStreamWriter.close();
+        } catch (IOException e) {
+            Toast.makeText(getApplicationContext(), "File Error", Toast.LENGTH_SHORT).show();
+        }
+
+        Toast.makeText(getApplicationContext(), "Gerät wurde hinzugefügt", Toast.LENGTH_SHORT)
+                .show();
     }
 }
