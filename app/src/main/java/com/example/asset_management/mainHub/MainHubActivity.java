@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * </p>
  * 11.05.2020
  */
-public class mainHubActivity extends AppCompatActivity {
+public class MainHubActivity extends AppCompatActivity {
 
 
 

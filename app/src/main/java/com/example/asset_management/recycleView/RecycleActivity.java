@@ -33,7 +33,7 @@ public class RecycleActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private RequestQueue mQueue;
     private ArrayList<Device> list = new ArrayList<>();
-
+    String url = "https://gist.githubusercontent.com/Dziersan/1766cd6c4ab4d61555e63cb34478d888/raw/a87289636a9d5c2ca522f16c9ae3119691f52819/0device.json";
     /**
      *  Executes code after open Activity.
      * @param savedInstanceState
@@ -48,7 +48,7 @@ public class RecycleActivity extends AppCompatActivity {
 
         this.deviceRecycleView = findViewById(R.id.devices);
 
-        jsonParse();
+        jsonParse(url);
     }
 
     /**
@@ -69,10 +69,8 @@ public class RecycleActivity extends AppCompatActivity {
     /**
      * Opens JSON-formatted URL, creates Device objectives and saves them into a list.
      */
-    private void jsonParse() {
-        String url = "https://gist.githubusercontent.com/Dziersan" +
-                "/1766cd6c4ab4d61555e63cb34478d888/raw/5d88df6945935c67090a2c61b9e355594eaef59a" +
-                "/0device.json";
+    private void jsonParse(String url) {
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -101,6 +99,8 @@ public class RecycleActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"Keine Verbindung gefunden",
+                        Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
             }
         });

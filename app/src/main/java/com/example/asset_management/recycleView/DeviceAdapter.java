@@ -64,7 +64,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
      *     Version 1.0
      * </p>
      * 11.05.2020
-     * creates the view with the TexFields
+     * creates the view with the TextFields
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View view;
@@ -86,4 +86,6 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
             image = view.findViewById(R.id.image);
         }
     }
+
+
 }

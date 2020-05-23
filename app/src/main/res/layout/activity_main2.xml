@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".recycleView.RecycleActivity">
+    tools:context=".recycleView.RecycleActivity"
+    android:id="@+id/deviceList">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

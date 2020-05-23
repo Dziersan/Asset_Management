@@ -17,7 +17,7 @@ import com.example.asset_management.R;
  * </p>
  * 11.05.2020
  */
-public class mainHubFragment extends Fragment {
+public class MainHubFragment extends Fragment {
 
     @Override
     public View onCreateView(
@@ -34,7 +34,7 @@ public class mainHubFragment extends Fragment {
         view.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(mainHubFragment.this)
+                NavHostFragment.findNavController(MainHubFragment.this)
                         .navigate(R.id.action_FirstFragment_to_addDeviceActivity);
             }
         });
@@ -42,7 +42,7 @@ public class mainHubFragment extends Fragment {
         view.findViewById(R.id.btnInventory).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(mainHubFragment.this)
+                NavHostFragment.findNavController(MainHubFragment.this)
                         .navigate(R.id.action_FirstFragment_to_recycleActivity);
             }
         });

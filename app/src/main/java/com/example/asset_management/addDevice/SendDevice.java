@@ -16,12 +16,14 @@ import java.net.URL;
  * </p>
  * 11.05.2020
  * Testcode to send Data to REST Service // Not Tested
+ * TODO(DZIERSAN) Try to send data to Server and get confirmation
  */
 public class SendDevice extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-
+		
+	   //The URL will be placed here
         String data = "";
 
         HttpURLConnection httpURLConnection = null;

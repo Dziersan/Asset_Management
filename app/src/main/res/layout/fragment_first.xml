@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainHub.mainHubFragment">
+    tools:context=".mainHub.MainHubFragment"
+    android:id="@+id/fragmentMainhub">
 
     <Button
         android:id="@+id/btnScan"

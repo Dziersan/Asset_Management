@@ -23,6 +23,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.file.Path;
 
 /**
  * AddDeviceActivity
@@ -30,6 +31,7 @@ import java.io.Writer;
  *     Version 1.0
  * </p>
  * 11.05.2020
+ * TODO(DZIERSAN) add all device features the customer wants
  */
 
 public class AddDeviceActivity extends AppCompatActivity {
@@ -81,6 +83,13 @@ public class AddDeviceActivity extends AppCompatActivity {
         Device device = new Device(stringInventoryNumber, stringEditModel, stringManufacturer,
                 stringCategorie, stringStatus);
 
+        createJsonFromDevice(device);
+
+//        Toast.makeText(getApplicationContext(), "Gerät wurde hinzugefügt", Toast.LENGTH_SHORT)
+//                .show();
+    }
+
+    public void createJsonFromDevice(Device device){
         Gson gson = new Gson();
         String json = gson.toJson(device);
 
@@ -88,12 +97,13 @@ public class AddDeviceActivity extends AppCompatActivity {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(getApplicationContext()
                     .openFileOutput("device.json", Context.MODE_PRIVATE));
             outputStreamWriter.write(json);
+
             outputStreamWriter.close();
+
+
         } catch (IOException e) {
             Toast.makeText(getApplicationContext(), "File Error", Toast.LENGTH_SHORT).show();
         }
-
-        Toast.makeText(getApplicationContext(), "Gerät wurde hinzugefügt", Toast.LENGTH_SHORT)
-                .show();
     }
+
 }
