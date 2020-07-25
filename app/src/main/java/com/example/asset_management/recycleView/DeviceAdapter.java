@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asset_management.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 /**
  * DeviceAdapter
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * 11.05.2020
  */
 public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder> {
-
+    private OnNoteListener mOnNoteListener;
     private ArrayList<Device> devices;
 
     @NonNull
@@ -28,10 +29,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_item,
                 parent,false);
-        return new ViewHolder(v);
+        return new ViewHolder(v, mOnNoteListener);
     }
-    public DeviceAdapter(ArrayList<Device>devices){
+    public DeviceAdapter(ArrayList<Device>devices, OnNoteListener onNoteListener){
         this.devices = devices;
+        this.mOnNoteListener = onNoteListener;
 }
 
     /**
@@ -43,10 +45,11 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Device device = devices.get(position);
         holder.inventoryNumber.setText(device.getInventoryNumber());
-        holder.deviceCategorie.setText(device.getDeviceCategorie());
         holder.manufacturer.setText(device.getManufacturer());
-        holder.status.setText(device.getStatus());
         holder.model.setText(device.getModel());
+        holder.deviceCategorie.setText(device.getDeviceCategorie());
+        holder.status.setText(device.getStatus());
+
     }
 
     @Override
@@ -66,7 +69,7 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
      * 11.05.2020
      * creates the view with the TextFields
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public final View view;
         public final TextView inventoryNumber;
         public final TextView manufacturer;
@@ -74,8 +77,9 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
         public final TextView status;
         public final TextView deviceCategorie;
         public final ImageView image;
+        OnNoteListener onNoteListener;
 
-        public ViewHolder(View view) {
+        public ViewHolder(View view, OnNoteListener onNoteListener) {
             super(view);
             this.view = view;
             inventoryNumber = view.findViewById(R.id.inventoryNumber);
@@ -84,8 +88,16 @@ public class DeviceAdapter extends RecyclerView.Adapter<DeviceAdapter.ViewHolder
             status = view.findViewById(R.id.status);
             deviceCategorie = view.findViewById(R.id.deviceCategorie);
             image = view.findViewById(R.id.image);
+            itemView.setOnClickListener(this);
+            this.onNoteListener = onNoteListener;
+        }
+
+        @Override
+        public void onClick(View v) {
+        onNoteListener.onNoteClick(getAdapterPosition());
         }
     }
-
-
+    public interface OnNoteListener{
+        void onNoteClick(int position);
+    }
 }

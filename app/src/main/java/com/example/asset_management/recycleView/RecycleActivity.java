@@ -28,12 +28,15 @@ import java.util.ArrayList;
  * </p>
  * 11.05.2020
  */
-public class RecycleActivity extends AppCompatActivity {
+public class RecycleActivity extends AppCompatActivity implements DeviceAdapter.OnNoteListener {
     private RecyclerView deviceRecycleView;
     private RecyclerView.Adapter adapter;
     private RequestQueue mQueue;
     private ArrayList<Device> list = new ArrayList<>();
-    String url = "https://gist.githubusercontent.com/Dziersan/1766cd6c4ab4d61555e63cb34478d888/raw/a87289636a9d5c2ca522f16c9ae3119691f52819/0device.json";
+    String url = "https://gist.githubusercontent.com/Dziersan/1766cd6c4ab4d61555e63cb34478d888/" +
+            "raw/bddf90ce241a4632cd84d0046866f2cd91367c8b/0device.json";
+
+
     /**
      *  Executes code after open Activity.
      * @param savedInstanceState
@@ -49,6 +52,12 @@ public class RecycleActivity extends AppCompatActivity {
         this.deviceRecycleView = findViewById(R.id.devices);
 
         jsonParse(url);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        this.deviceRecycleView.setLayoutManager(mLayoutManager);
+        adapter = new DeviceAdapter(list,this);
+        this.deviceRecycleView.setAdapter(adapter);
+
     }
 
     /**
@@ -56,20 +65,20 @@ public class RecycleActivity extends AppCompatActivity {
      */
     private void setupRecyclerView(){
 
-    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-    this.deviceRecycleView.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        this.deviceRecycleView.setLayoutManager(mLayoutManager);
 
-    adapter = new DeviceAdapter(list);
-    this.deviceRecycleView.setAdapter(adapter);
+        adapter = new DeviceAdapter(list,this);
+        this.deviceRecycleView.setAdapter(adapter);
 
-    String show = list.size() + " Geräte wurden gefunden";
-    Toast.makeText(getApplicationContext(),show,Toast.LENGTH_SHORT).show();
+        String show = list.size() + " Geräte wurden gefunden";
+        Toast.makeText(getApplicationContext(),show,Toast.LENGTH_SHORT).show();
 }
 
     /**
      * Opens JSON-formatted URL, creates Device objectives and saves them into a list.
      */
-    private void jsonParse(String url) {
+    public void jsonParse(String url) {
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -106,5 +115,18 @@ public class RecycleActivity extends AppCompatActivity {
         });
         mQueue = Volley.newRequestQueue(RecycleActivity.this);
         mQueue.add(request);
+    }
+
+    /**
+     * Starts Activity if Item is clicked
+     * @param position
+     */
+    @Override
+    public void onNoteClick(int position) {
+        Toast.makeText(getApplicationContext(),list.get(position).getInventoryNumber(),
+                Toast.LENGTH_SHORT).show();
+//        list.get(position);
+//        Intent intent = new Intent(this. NewActivity.java);
+//        startactivity
     }
 }

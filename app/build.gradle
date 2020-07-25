@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 
 android {
     compileSdkVersion 29
@@ -15,12 +16,21 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    sourceSets {
+        test.resources.srcDirs += 'src/unitTests/resources'
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled = true
+        }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
 }
@@ -57,6 +67,21 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.0') {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+//    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+
+    //test
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.23.4'
 }
 repositories {
     mavenCentral()

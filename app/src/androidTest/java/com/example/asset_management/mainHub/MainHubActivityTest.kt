@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
 import java.util.regex.Pattern.matches
 
 @RunWith(AndroidJUnit4ClassRunner::class)
-class mainHubActivityTest {
+class MainHubActivityTest {
 
 //    @get: Rule
 //    val activityRule = ActivityScenarioRule.launch(mainHubActivity::class.java)
@@ -54,12 +54,29 @@ class mainHubActivityTest {
 
         onView(withId(R.id.btnAdd)).perform(click())
         onView(withId(R.id.addDevice)).check(ViewAssertions.matches(isDisplayed()))
+    }
+    @Test
+    fun testNavigationAddDeviceBack() {
+
+        val activityScenario = ActivityScenario.launch(MainHubActivity::class.java)
+
+        onView(withId(R.id.btnAdd)).perform(click())
+        onView(withId(R.id.addDevice)).check(ViewAssertions.matches(isDisplayed()))
         pressBack()
         onView(withId(R.id.mainhub)).check(ViewAssertions.matches(isDisplayed()))
     }
-
     @Test
     fun testNavigationShowDevice() {
+
+        val activityScenario = ActivityScenario.launch(MainHubActivity::class.java)
+
+        onView(withId(R.id.btnInventory)).perform(click())
+        onView(withId(R.id.deviceList)).check(ViewAssertions.matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun testNavigationShowDeviceBack() {
 
         val activityScenario = ActivityScenario.launch(MainHubActivity::class.java)
 
@@ -69,7 +86,6 @@ class mainHubActivityTest {
         onView(withId(R.id.mainhub)).check(ViewAssertions.matches(isDisplayed()))
 
     }
-
 
 }
 
