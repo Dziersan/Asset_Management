@@ -39,7 +39,6 @@ import java.io.IOException;
 
 public class ScanDeviceActivity extends AppCompatActivity {
 
-    private Button btnSearch;
     SurfaceView surfaceView;
     CameraSource cameraSource;
     TextView textView;
@@ -51,14 +50,6 @@ public class ScanDeviceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan_device);
 
-        btnSearch = findViewById(R.id.btnSearch);
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    findViewById(R.id.camerapreview);
-            }
-        });
         surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
         textView = (TextView) findViewById(R.id.textView);
 
