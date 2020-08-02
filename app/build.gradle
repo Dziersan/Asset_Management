@@ -82,7 +82,19 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0'
     androidTestImplementation 'org.mockito:mockito-android:2.23.4'
+
+    //vision
+
+    implementation 'com.google.android.gms:play-services-vision:10.0.0'
+    implementation 'com.google.android.gms:play-services-vision:15.0.0'
+
 }
 repositories {
     mavenCentral()
+    google()
+    jcenter()
+    maven()
+            {
+                url "https://maven.google.com"
+            }
 }

@@ -2,22 +2,33 @@ package com.example.asset_management.scanDevice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import com.example.asset_management.R;
+
 import android.content.Context;
 import android.os.Vibrator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.SparseArray;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+//import android.support.v7.app.AppCompatActivity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.TextView;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+
 import java.io.IOException;
 
 /**
@@ -41,10 +52,11 @@ public class ScanDeviceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan_device);
 
         btnSearch = findViewById(R.id.btnSearch);
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                    findViewById(R.id.camerapreview);
             }
         });
         surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
@@ -57,6 +69,7 @@ public class ScanDeviceActivity extends AppCompatActivity {
                 .setRequestedPreviewSize(640, 480).build();
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
+            @SuppressLint("MissingPermission")
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
