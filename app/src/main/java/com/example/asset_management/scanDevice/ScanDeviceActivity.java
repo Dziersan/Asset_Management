@@ -57,7 +57,7 @@ public class ScanDeviceActivity extends AppCompatActivity {
                 .setBarcodeFormats(Barcode.QR_CODE).build();
 
         cameraSource = new CameraSource.Builder(this, barcodeDetector)
-                .setRequestedPreviewSize(640, 480).build();
+                .setRequestedPreviewSize(640, 480).setAutoFocusEnabled(true).build();
 
         surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @SuppressLint("MissingPermission")
@@ -69,6 +69,7 @@ public class ScanDeviceActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
+
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
