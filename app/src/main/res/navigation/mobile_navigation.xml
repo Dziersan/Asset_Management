@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_device">
+
+    <fragment
+        android:id="@+id/navigation_device"
+        android:name="com.example.asset_management.deviceCard.ui.card.CardFragment"
+        android:label="Gerät"
+        tools:layout="@layout/fragment_device_card" />
+
+    <fragment
+        android:id="@+id/navigation_map"
+        android:name="com.example.asset_management.deviceCard.ui.map.MapFragment"
+        android:label="Karte"
+        tools:layout="@layout/fragment_device_card_map" />
+
+    <activity
+        android:id="@+id/navigation_reservation1"
+        android:name="com.example.asset_management.deviceCard.ui.reservation.ReservationActivity"
+        android:label="Reservieren"
+        tools:layout="@layout/activity_reservation" />
+
+    <fragment
+        android:id="@+id/navigation_reservation"
+        android:name="com.example.asset_management.deviceCard.ui.reservation.ReservationFragment"
+        android:label="Gerät reservieren"
+        tools:layout="@layout/fragment_device_card_reservation" />
+</navigation>
