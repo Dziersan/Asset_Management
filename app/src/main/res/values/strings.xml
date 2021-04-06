@@ -13,4 +13,226 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_device_card">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications" translatable="false">Benachrichtigungen</string>
+    <string name="title_device_list_old_versions" translatable="false">Versionsverlauf</string>
+    <string name="title_deviceList" translatable="false">Geräteübersicht</string>
+    <string name="title_addDevice" translatable="false">Gerät hinzufügen</string>
+    <string name="title_device_history" translatable="false">Geräteverlauf</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string-array name="status">
+        <item>Verfügbar</item>
+        <item>Ausgeliehen</item>
+        <item>In Wartung</item>
+        <item>Außer Betrieb</item>
+        <item>Defekt</item>
+        <item>Verschollen/Verschwunden</item>
+        <item>Gestohlen</item>
+        <item></item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Rüttelplatten</item>
+        <item>Stampfer</item>
+        <item>Motorflex</item>
+        <item>Rohrgreifer</item>
+        <item>Kettensägen</item>
+        <item>Motorhammer</item>
+        <item>Leiter</item>
+        <item>Exoten</item>
+        <item>Leiter</item>
+        <item>NICHT GESETZT!</item>
+        <item></item>
+    </string-array>
+
+<!--    JSON File names-->
+    <string name="deviceListNameJSON">DeviceList.json</string>
+    <string name="deviceNameJSON">Device.json</string>
+    <string name="historyDeviceListNameJSON">HistoryDeviceList.json</string>
+    <string name="switchNameJSON">Switch.json</string>
+    <string name="changedDeviceNameJSON">ChangedDevice.json</string>
+    <string name="newDeviceNameJSON">NewDevice.json</string>
+    <string name="reservationNameJSON">Reservation.json</string>
+    <string name="reservationListNameJSON">ReservationList.json</string>
+    <string name="reservationDeviceNameJSON">ReservationDevice.json</string>
+    <string name="tuevNameJSON">TuevList.json</string>
+    <string name="uvvNameJSON">UvvList.json</string>
+    <string name="maintenanceNameJSON">MaintenanceList.json</string>
+    <string name="bookingNameJSON">BookingList.json</string>
+    <string name="userListNameJSON">UserList.json</string>
+    <string name="lastUpdateNameJSON">LastUpdate.json</string>
+    <string name="deviceOldVersionNameJSON">DeviceOldVersion.json</string>
+    <string name="logsNameJSON">ConnectionLogs.json</string>
+    <string name="loginNameJSON">Login.json</string>
+
+
+<!--    putExtraNames-->
+    <string name="deviceListName">DEVICE_LIST</string>
+    <string name="deviceName">DEVICE</string>
+    <string name="isOldVersion">IS_OLD_VERSION</string>
+    <string name="isFilteredList">IS_PUT_EXTRA_LIST</string>
+    <string name="filteredList">PUT_EXTRA_LIST</string>
+    <string name="user">USER</string>
+
+<!--    MessageTexts-->
+    <string name="welcomeTitle">Willkommen</string>
+    <string name="discardTitle">Änderungen verwerfen</string>
+    <string name="discardTitleCloseApp">App beenden</string>
+    <string name="deleteDeviceTitle">Gerät löschen</string>
+    <string name="deleteReservationTitle">Reservierung löschen</string>
+    <string name="deleteUserTitle">Benutzer löschen</string>
+    <string name="enterUsername">Bitte Benutzernamen eingeben.</string>
+    <string name="enterPassword">Bitte Passwort eingeben.</string>
+    <string name="enterUsernamePassword">Bitte Benutzernamen und Passwort eingeben.</string>
+    <string name="deleteReservationText">Sind Sie sich sicher, dass Sie die Reservierung löschen
+        möchten?</string>
+    <string name="deleteUserText">Sind Sie sich sicher, dass Sie den Benutzer löschen möchten?
+    </string>
+    <string name="deleteDeviceText">Sind Sie sich sicher, dass Sie die Änderungen verwerfen möchten?
+    </string>
+    <string name="discardText">Sind Sie sich sicher, dass Sie die Änderungen verwerfen möchten?
+    </string>
+    <string name="discardTextCloseApp">Sind Sie sich sicher, dass Sie die App schließen möchten?
+    </string>
+    <string name="welcomeText">Um sich mit allen Funktionalitäten der App vertraut zu machen werden
+                        Sie zu der Bedienungsanleitung weitergeleitet. Diese können Sie später in
+                        den Einstellungen immer wieder ansehen. </string>
+    <string name="alertDialogAcceptButton">ok</string>
+    <string name="lastUpdateMessage">Letzte Aktualisierung: </string>
+    <string name="noReservationFoundText">Keine Reservierungen gefunden.</string>
+    <string name="failedToReserve">Das Projekt kann nur eine Zahl sein! Das Enddatum darf nicht
+        vor dem Startdaum liegen!</string>
+    <string name="numbersDeviceFound"> Geräte wurden gefunden.</string>
+    <string name="numbersUserFound"> Benutzer wurden gefunden.</string>
+    <string name="saveMessage">Informationen wurden gespeichert.</string>
+    <string name="noConnectionServerMessage">Keine Verbindung zum Server.</string>
+    <string name="noOldVersionsFound">Keine alten Versionen gefunden.</string>
+    <string name="fillConstraintsMessage">Bitte Füllen Sie Felder aus, die mit einem Sternchen
+        markiert sind.</string>
+    <string name="noAccessMessage">Sie haben keine Berechtigungen diese Funktion auszuführen.
+    </string>
+    <string name="conversionErrorMessage">Conversion Error</string>
+    <string name="failureText">Fehler</string>
+
+    <!--    NotificationMenu-->
+    <string name="notification0">Anstehende TÜV Prüfungen</string>
+    <string name="notification1">Anstehende UVV Prüfungen</string>
+    <string name="notification2">Anstehende Instandhaltungstermine</string>
+    <string name="notification3">Relevante Termine</string>
+
+    <!--    SettingsMenu-->
+    <string name="settings0">Nutzer anzeigen</string>
+    <string name="settings1">Informationen zur App</string>
+    <string name="settings2">LOGIN</string>
+    <string name="settings3">FAQ</string>
+
+<!--    Device Status for Spinner-->
+    <string name="deviceStatus0">Verfügbar</string>
+    <string name="deviceStatus1">Ausgeliehen</string>
+    <string name="deviceStatus2">In Wartung</string>
+    <string name="deviceStatus3">Außer Betrieb</string>
+    <string name="deviceStatus4">Defekt</string>
+    <string name="deviceStatus5">Verschollen/Verschwunden</string>
+    <string name="deviceStatus6">Gestohlen</string>
+
+    <!--    Device Category for Spinner-->
+    <string name="deviceCategory0">Rüttelplatten</string>
+    <string name="deviceCategory1">Stampfer</string>
+    <string name="deviceCategory2">Motorflex</string>
+    <string name="deviceCategory3">Rohrgreifer</string>
+    <string name="deviceCategory4">Kettensägen</string>
+    <string name="deviceCategory5">Motorhammer</string>
+    <string name="deviceCategory6">Leiter</string>
+    <string name="deviceCategory7">Exoten</string>
+    <string name="deviceCategory8">NICHT GESETZT!</string>
+
+<!--    Calenderpicker-->
+    <string name="calendarPicker0">tuev</string>
+    <string name="calendarPicker1">uvv</string>
+    <string name="calendarPicker2">repair</string>
+    <string name="calendarPicker3">guarantee</string>
+
+<!--    URL-->
+    <string name="url">http://www.dallmann-bau.de</string>
+    <string name="urlHelp">http://10.0.2.2:3000/App-FAQ</string>
+    <string name="baseURL">http://10.0.2.2:3000/</string>
+
+    <string name="datePattern">yyyy-MM-dd</string>
+    <string name="noLocationText">Kein Standortdaten gefunden.</string>
+
+<!--    TextField/Button Values-->
+    <string name="textInventoryNumber">Inventarnummer</string>
+    <string name="textWokerId">Arbeiter Nummer</string>
+    <string name="textFirstname">Vorname</string>
+    <string name="textProject">Projekt</string>
+    <string name="textSurname">Nachname</string>
+    <string name="textEmail">E-Mail</string>
+    <string name="textRole">Rolle</string>
+    <string name="textRoleAddDevice">Recht zum Anlegen neuer Geräten</string>
+    <string name="textRightEditDevice">Recht zum Bearbeiten von Geräten</string>
+    <string name="textRightViewDevice">Recht zum Ansehen von Geräten</string>
+    <string name="textRightDeleteDevice">Recht zum Löschen von Geräten</string>
+    <string name="textRightAddUser">Recht zum Anlegen neuer Benutzer</string>
+    <string name="textRightDeleteUser">Recht zum Löschen von Benutzer</string>
+    <string name="textRightEditUser">Recht zum Bearbeiten von Benutzer</string>
+    <string name="textRightReserveDevice">Recht zum Reservieren von Geräten</string>
+    <string name="textRightEditReservation">Recht zum Bearbeiten von Reservierungen</string>
+    <string name="textRightDeleteReservation">Recht zum Löschen von Reservierungen</string>
+    <string name="btnSaveText">Speichern</string>
+    <string name="textStatus">Status*</string>
+    <string name="textCategoryAdd">Kategorie*</string>
+    <string name="textCategory">Kategorie</string>
+    <string name="textSerialnumber">Seriennummer*</string>
+    <string name="textGuarantee">Garantie</string>
+    <string name="textPostcode">Postleitzahl</string>
+    <string name="textCity">Stadt</string>
+    <string name="textTuev">TÜV</string>
+    <string name="textUvv">UVV</string>
+    <string name="textLastRepair">letzte Reparatur</string>
+    <string name="textNotesLastRepair">Notiz der letzten Reparatur</string>
+    <string name="textBeaconMinor">BeaconMinor</string>
+    <string name="textBeaconMajor">BeaconMayjor</string>
+    <string name="textNotes">Notizen</string>
+    <string name="textConstraints">Mit * Markierte Felder sind Pflichtfelder</string>
+    <string name="textFilterBy">Filtern nach...</string>
+    <string name="textFilterByStatus">Filtern nach Status</string>
+    <string name="textFilterByTuevPeriod">TÜV Zeitraum auswählen</string>
+    <string name="textStart">start</string>
+    <string name="textConstruction">Baustelle</string>
+    <string name="textReserve">reservieren</string>
+    <string name="textEnd">Ende</string>
+    <string name="textFilter">Filtern</string>
+    <string name="textManufacturer">Hersteller</string>
+    <string name="textManufacturerAdd">Hersteller*</string>
+    <string name="textModel">Modell</string>
+    <string name="textModelAdd">Modell*</string>
+    <string name="textName">Name</string>
+    <string name="textStreet">Straße</string>
+    <string name="textDevice">Gerät</string>
+    <string name="textMap">Maps</string>
+    <string name="textEdit">Bearbeiten</string>
+    <string name="textShowHistoryDevice">Versionsverlauf</string>
+    <string name="textDelete">Löschen</string>
+    <string name="textReloadList">Liste neu laden</string>
+    <string name="textAddUser">Benutzer hinzufügen</string>
+    <string name="password">Passwort</string>
+    <string name="needHelpText">Brauchen Sie Hilfe?</string>
+
 </resources>

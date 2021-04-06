@@ -2,9 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.asset_management">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +18,56 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".addDevice.AddDeviceActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
         <activity
-            android:name=".recycleView.RecycleActivity"
+            android:name=".recycleViewUserList.AddUserActivity"
+            android:label="@string/title_addDevice" />
+        <activity android:name=".notification.NotificationMenuActivity" />
+        <activity android:name=".recycleViewUserList.UserCardActivity" />
+        <activity
+            android:name=".recycleViewDeviceList.FilterDeviceListActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".deviceCard.DeviceCardOldVersionsListActivity"
+            android:label="@string/title_device_list_old_versions" />
+        <activity
+            android:name=".deviceCard.ui.reservation.ReservationActivity"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDTdSr1rEJABsXB-Q__NtFPhx7eqYiNfaA" />
+
+        <activity
+            android:name=".deviceCard.DeviceCardActivity"
+            android:label="@string/title_activity_device_card" />
+        <activity android:name=".scanDevice.ScanDeviceActivity" />
+        <activity android:name=".addDevice.AddDeviceActivity" />
+        <activity
+            android:name=".recycleViewDeviceList.DeviceRecycleActivity"
+            android:label="@string/title_deviceList"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".recycleViewUserList.UserRecycleActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".recycleViewDeviceList.DeviceHistoryActivity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".mainHub.MainHubActivity"
             android:label="@string/app_name"
@@ -28,7 +78,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

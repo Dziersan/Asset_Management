@@ -1,5 +1,6 @@
 package com.example.asset_management.mainHub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,24 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.asset_management.R;
+import com.example.asset_management.connection.Connection;
+import com.example.asset_management.jsonhandler.JsonHandler;
+import com.example.asset_management.login.UserInfo;
+import com.example.asset_management.recycleViewDeviceList.Device;
+import com.example.asset_management.recycleViewDeviceList.DeviceRecycleActivity;
+import com.example.asset_management.recycleViewUserList.UserRecycleActivity;
+import com.example.asset_management.settings.SettingsActivity;
+
 /**
  * MainHubFragment
  * <p>
  *     Version 1.0
  * </p>
  * 11.05.2020
+ * AUTHOR: Dominik Dziersan
  */
 public class MainHubFragment extends Fragment {
+    UserInfo user = new UserInfo();
 
     @Override
     public View onCreateView(
@@ -30,12 +41,18 @@ public class MainHubFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        user = MainHubActivity.getUser();
+
 
         view.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(MainHubFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_addDeviceActivity);
+                if(user.intToBool(user.getAddDevice())){
+                    NavHostFragment.findNavController(MainHubFragment.this)
+                            .navigate(R.id.action_FirstFragment_to_addDeviceActivity);
+                } else {
+                    user.noAccessMessage(getContext());
+                }
             }
         });
 
@@ -47,6 +64,35 @@ public class MainHubFragment extends Fragment {
             }
         });
 
+        view.findViewById(R.id.btnScan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainHubFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_scanDeviceActivity);
+            }
+        });
+        view.findViewById(R.id.btnHistory).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainHubFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_deviceHistoryActivity);
+            }
+        });
 
+        view.findViewById(R.id.btnSearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainHubFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_notificationMenuActivity);
+            }
+        });
+        view.findViewById(R.id.btnSettings).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(MainHubFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_settingsActivity);
+
+            }
+        });
     }
 }

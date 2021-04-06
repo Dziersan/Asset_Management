@@ -1,24 +1,23 @@
 package com.example.asset_management.mainHub;
 
-import android.content.Context;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-
-import com.example.asset_management.recycleView.Device;
-import com.example.asset_management.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.Toast;
+import com.example.asset_management.R;
+import com.example.asset_management.connection.Connection;
+import com.example.asset_management.deviceCard.SwitchEditable;
+import com.example.asset_management.login.LoginActivity;
+import com.example.asset_management.login.UserInfo;
 
-import java.util.ArrayList;
 
 /**
  * MainHubActivity
@@ -28,27 +27,67 @@ import java.util.ArrayList;
  * 11.05.2020
  */
 public class MainHubActivity extends AppCompatActivity {
-
-
+    static UserInfo user = new UserInfo();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Intent intent = getIntent();
+        String userPutExta = getString(R.string.user);
+        user =  (UserInfo) intent.getSerializableExtra(userPutExta);
+
+        Toolbar toolbar = findViewById(R.id.toolbarMain);
         setSupportActionBar(toolbar);
 
+        Connection connection = new Connection();
+        connection.getDeviceList(this);
+        SwitchEditable switchEditable = new SwitchEditable(false);
+        SwitchEditable.createSwitch(switchEditable, this);
 
+        try {
+            user = getUser();
+        } catch (Exception e){
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+        }
+        if(user == null){
+            Intent loginIntent =new Intent(MainHubActivity.this,
+                    LoginActivity.class);
+            finish();
+            startActivity(loginIntent);
+        } else {
+            SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+            boolean firstStart = prefs.getBoolean("firstStart", true);
+            if (firstStart) {
+                showStartDialog();
             }
-        });
+        }
+
+
+
     }
+
+    @Override
+    public void onBackPressed() {
+
+
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.discardTitleCloseApp))
+                    .setMessage(getString(R.string.discardTextCloseApp))
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            SwitchEditable switchEditable = new SwitchEditable(false);
+                            SwitchEditable.createSwitch(switchEditable, getApplicationContext());
+                            finish();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,11 +104,31 @@ public class MainHubActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
+    private void showStartDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.welcomeTitle))
+                .setMessage(getString(R.string.welcomeText))
+                .setPositiveButton(getString(R.string.alertDialogAcceptButton), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+                                Uri.parse(getString(R.string.url)));
+                        startActivity(browserIntent);
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
 
+    public static UserInfo getUser(){
+        return user;
+    }
 
 }
